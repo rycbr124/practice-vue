@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p><!--v-bind:연결속성="데이터변수" vue 데이터와 태그 속성 연결-->
+        <p>{{ doubleNum }}</p>
+        <div v-if="loading"><!--v-if="데이터변수" 변수값에 따른 if,else-->
+            Loading...
+        </div>
+        <div v-else>
+            test user has been logged in
+        </div>
+        <div v-show="loading"><!--if와 유사, display:none으로 변경(v-if는 dom 삭제)-->
+            Loading...
+        </div>
+        <!--https://vuejs.org/v2/guide/forms.html#ad-->
+        <input type="text" v-model="message">
+        <p>입력 : {{ message }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                uuid: 'abc1234',
+                name: 'text-blue',
+                loading: false,
+                message: '',
+            },
+            computed: { //계산 속성
+                doubleNum: function(){
+                    return this.num * 2;    
+                }
+            },
+        });
+    </script>
+</body>
+</html>

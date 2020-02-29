@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({//vue 인스턴스 생성,root 컴포넌트
+            el:'#app', //element, body태그 안에 #app태그에 인스턴스 붙임
+            data: {
+                message : 'hi'
+            },
+            methods:{
+
+            },
+            created:function(){
+
+            }
+        });
+    </script>
+</body>
+</html>

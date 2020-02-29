@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Navigation Guard</h1>
+        <p>
+          <router-link to="/login">Login Page</router-link>
+          <router-link to="/home">Home Page</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script><!--router보다 먼저-->
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js "></script>
+    <script>
+        var Login = {
+            template: '<p>Login Component</p>',
+            beforeRouteEnter(to, from, next){
+                // Login 컴포넌트가 화면에 표시되기 전에 수행될 로직
+                // Login 컴포넌트는 아직 생성되지 않은 시점
+            },
+            beforeRouteUpdate(to, from, next){
+                // 화면에 표시된 컴포넌트가 변경될 때 수행될 로직
+                // `this`로 Login 컴포넌트를 접근할 수 있음
+            },
+            beforeRouteLeave(to, from, next){
+                // Login 컴포넌트를 화면에 표시한 url 값이 변경되기 직전의 로직
+                // `this`로 Login 컴포넌트를 접근할 수 있음
+            },
+        };
+        var Home = { template: '<p>Home Component</p>' };
+
+        // 라우팅 정보
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: '/login',
+                    component: Login,
+                    beforeEnter: function(to, from, next){//라우터 가드
+                        //인증값 검증 로직
+                        // next();
+                    }    
+                },
+                { path: '/home', component: Home }
+            ]
+        });
+
+        new Vue({
+            el: '#app',
+            router: router,
+        });
+    </script>    
+</body>
+</html>
